@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0c4a3c2b.css",
+    "main.js": "/static/js/main.7050c8b7.js",
+    "static/media/OpenSans-ExtraBoldItalic.ttf": "/static/media/OpenSans-ExtraBoldItalic.f539b62a07758863efec.ttf",
+    "static/media/OpenSans-MediumItalic.ttf": "/static/media/OpenSans-MediumItalic.4d4312a9af9f5f85f6bf.ttf",
+    "static/media/OpenSans-SemiBoldItalic.ttf": "/static/media/OpenSans-SemiBoldItalic.5d2b4174202860d9e550.ttf",
+    "static/media/OpenSans-Italic.ttf": "/static/media/OpenSans-Italic.79c81eb67c8c53b33a29.ttf",
+    "static/media/OpenSans-BoldItalic.ttf": "/static/media/OpenSans-BoldItalic.ed58bc283d35f0fd48b3.ttf",
+    "static/media/OpenSans-ExtraBold.ttf": "/static/media/OpenSans-ExtraBold.312244ca5ea57843f749.ttf",
+    "static/media/OpenSans-Medium.ttf": "/static/media/OpenSans-Medium.f0cdede053a22b990af8.ttf",
+    "static/media/OpenSans-Regular.ttf": "/static/media/OpenSans-Regular.d7d7b8359eeb9cddfba6.ttf",
+    "static/media/OpenSans-Bold.ttf": "/static/media/OpenSans-Bold.6e27168fc8a5a200a026.ttf",
+    "static/media/OpenSans-Light.ttf": "/static/media/OpenSans-Light.846a12caf01a940847a7.ttf",
+    "static/media/OpenSans-SemiBold.ttf": "/static/media/OpenSans-SemiBold.d7261533b9a545ddc769.ttf",
+    "static/media/Lato-BoldItalic.ttf": "/static/media/Lato-BoldItalic.fd32b4dea61508c37b78.ttf",
+    "static/media/Lato-Light.ttf": "/static/media/Lato-Light.c7400fcad9e48ca9043f.ttf",
+    "static/media/Lato-Italic.ttf": "/static/media/Lato-Italic.a9f3ee269217f44df65f.ttf",
+    "static/media/Lato-Regular.ttf": "/static/media/Lato-Regular.9d883d540ee2b4de8024.ttf",
+    "static/media/Lato-Bold.ttf": "/static/media/Lato-Bold.636be8de934918e38ed9.ttf",
+    "static/media/Lato-BlackItalic.ttf": "/static/media/Lato-BlackItalic.09fc285661e54addb1fd.ttf",
+    "static/media/Lato-Thin.ttf": "/static/media/Lato-Thin.5a60dde25d817751d590.ttf",
+    "static/media/Lato-Black.ttf": "/static/media/Lato-Black.57dee8aface5572f9101.ttf",
+    "static/media/Lato-LightItalic.ttf": "/static/media/Lato-LightItalic.4310bbed01b37dfcee98.ttf",
+    "static/media/Lato-ThinItalic.ttf": "/static/media/Lato-ThinItalic.42a616fcfc8a08caef71.ttf",
+    "index.html": "/index.html",
+    "main.0c4a3c2b.css.map": "/static/css/main.0c4a3c2b.css.map",
+    "main.7050c8b7.js.map": "/static/js/main.7050c8b7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0c4a3c2b.css",
+    "static/js/main.7050c8b7.js"
+  ]
+}
