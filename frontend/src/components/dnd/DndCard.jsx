@@ -1,12 +1,8 @@
 export default function DndCard({cardData}) {
-  const containerClassList = `flex flex-row w-[300px] h-32 bg-white hover:bg-neutral-200 
-  border border-black cursor-grab select-none`;
-  
-  const cardFontStyle = "font-OpenSans text-[11px] leading-[14px]";
 
   function Header() {
     return(
-      <div className={`${cardFontStyle} flex items-center bg-[#0873BB] text-white h-9 px-1`}>
+      <div data-card-h1>
         {cardData.h1}
       </div>
     );
@@ -14,21 +10,21 @@ export default function DndCard({cardData}) {
   function Material() {
     return(
       <div className="px-1 pt-[1px]">
-        <div className={`${cardFontStyle} inline-block font-bold float-left `}>Material:&nbsp;</div>
-        <div className={`${cardFontStyle}`}>{cardData.material}</div>
+        <div className={`inline-block font-bold float-left `}>Material:&nbsp;</div>
+        <div>{cardData.material}</div>
       </div>
     );
   }
   function Weight() {
     return(
       <div className="px-1">
-        <div className={`${cardFontStyle} inline-block font-bold float-left`}>Weight:&nbsp;</div>
-        <div className={`${cardFontStyle}`}>{cardData.weight}</div>
+        <div className={`inline-block font-bold float-left`}>Weight:&nbsp;</div>
+        <div>{cardData.weight}</div>
       </div>
     );
   }
   function PriceLabel() {
-    return (<div className={`${cardFontStyle} px-1 font-bold`}>Price:</div>);
+    return (<div className={`px-1 font-bold`}>Price:</div>);
   }
 
   // Render object, if prop is given from database
@@ -50,6 +46,7 @@ export default function DndCard({cardData}) {
       </div>
     );
   }
+
   function RightSide() {
     return(
       <div className="w-1/2 text-black">
@@ -59,7 +56,7 @@ export default function DndCard({cardData}) {
   }
 
   return(
-    <div className={containerClassList}>
+    <div data-card>
       <LeftSide />
       <RightSide />
     </div>
