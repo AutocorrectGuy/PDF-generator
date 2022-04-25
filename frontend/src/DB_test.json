@@ -1,0 +1,122 @@
+[
+  {
+    "h1": "Wear-out metal sheet for blower house",
+    "material": "Hardox 500",
+    "weight": 2.1,
+    "w_unit": "kg",
+    "price": 32.53,
+    "currency": "EUR",
+    "img": "...",
+    "code1": "D133",
+    "code2": "222019695A",
+    "lists": []
+  },
+  {
+    "h1": "Fan vertical counterknife",
+    "material": "Hardox 500",
+    "weight": "",
+    "w_unit": "",
+    "price": 13.65,
+    "currency": "EUR",
+    "img": "...",
+    "code1": "D012",
+    "code2": "222019528A",
+    "lists": []
+  },
+  {
+    "h1": "Wear-out metal sheet for blower house",
+    "material": "Hardox 500",
+    "weight": 1.4,
+    "w_unit": "kg",
+    "price": 33.56,
+    "currency": "EUR",
+    "img": "...",
+    "code1": "D134",
+    "code2": "222019691A",
+    "lists": []
+  },
+  {
+    "h1": "Wear-out metal sheet for blower house",
+    "material": "Hardox 500",
+    "weight": 1.5,
+    "w_unit": "kg",
+    "price": 123.17,
+    "currency": "EUR",
+    "img": "...",
+    "code1": "D140",
+    "code2": "222019682A",
+    "lists": []
+  },
+  {
+    "h1": "Wear-out metal sheet for blower house",
+    "material": "Hardox 500",
+    "weight": 9.5,
+    "w_unit": "kg",
+    "price": 33.53,
+    "currency": "EUR",
+    "img": "...",
+    "code1": "D136",
+    "code2": "222026083A",
+    "lists": []
+  },
+  {
+    "h1": "Wear-out metal sheet for blower house",
+    "material": "Duroxite 100",
+    "weight": 5.5,
+    "w_unit": "kg",
+    "price": 123.43,
+    "currency": "EUR",
+    "img": "...",
+    "code1": "D137",
+    "code2": "2220197630",
+    "lists": []
+  },
+  {
+    "h1": "Wear-out metal sheet for blower house",
+    "material": "Duroxite 100",
+    "weight": 11.4,
+    "w_unit": "kg",
+    "price": 8888.16,
+    "currency": "EUR",
+    "img": "...",
+    "code1": "D139",
+    "code2": "2220260751",
+    "lists": []
+  },
+  {
+    "h1": "Wear-out metal sheet for blower house",
+    "material": "Hardox 500",
+    "weight": 1.9,
+    "w_unit": "kg",
+    "price": 123.89,
+    "currency": "EUR",
+    "img": "...",
+    "code1": "D135",
+    "code2": "222019692A",
+    "lists": []
+  },
+  {
+    "h1": "Blower house side part",
+    "material": "",
+    "weight": 38,
+    "w_unit": "kg",
+    "price": 1155.03,
+    "currency": "EUR",
+    "img": "...",
+    "code1": "D144",
+    "code2": "223019705A",
+    "lists": []
+  },
+  {
+    "h1": "Wear-out metal sheet for blower house",
+    "material": "",
+    "weight": 28,
+    "w_unit": "kg",
+    "price": 1231.47,
+    "currency": "EUR",
+    "img": "...",
+    "code1": "D145",
+    "code2": "223026158A",
+    "lists": []
+  }
+]
