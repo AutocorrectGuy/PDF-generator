@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.0c4a3c2b.css",
-    "main.js": "/static/js/main.7050c8b7.js",
+    "main.css": "/static/css/main.f437b9a4.css",
+    "main.js": "/static/js/main.295581de.js",
     "static/media/OpenSans-ExtraBoldItalic.ttf": "/static/media/OpenSans-ExtraBoldItalic.f539b62a07758863efec.ttf",
     "static/media/OpenSans-MediumItalic.ttf": "/static/media/OpenSans-MediumItalic.4d4312a9af9f5f85f6bf.ttf",
     "static/media/OpenSans-SemiBoldItalic.ttf": "/static/media/OpenSans-SemiBoldItalic.5d2b4174202860d9e550.ttf",
@@ -24,11 +24,11 @@
     "static/media/Lato-LightItalic.ttf": "/static/media/Lato-LightItalic.4310bbed01b37dfcee98.ttf",
     "static/media/Lato-ThinItalic.ttf": "/static/media/Lato-ThinItalic.42a616fcfc8a08caef71.ttf",
     "index.html": "/index.html",
-    "main.0c4a3c2b.css.map": "/static/css/main.0c4a3c2b.css.map",
-    "main.7050c8b7.js.map": "/static/js/main.7050c8b7.js.map"
+    "main.f437b9a4.css.map": "/static/css/main.f437b9a4.css.map",
+    "main.295581de.js.map": "/static/js/main.295581de.js.map"
   },
   "entrypoints": [
-    "static/css/main.0c4a3c2b.css",
-    "static/js/main.7050c8b7.js"
+    "static/css/main.f437b9a4.css",
+    "static/js/main.295581de.js"
   ]
 }
