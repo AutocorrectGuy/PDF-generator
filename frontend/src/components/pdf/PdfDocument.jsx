@@ -9,7 +9,7 @@ import DB from "../../DB_test.json"
 export default function PdfDocument () {
 
   // select certains properties from database items (still retunrs arr of objs)
-  let db = mapOutCardProperties(DB);
+  let db = mapOutCardProperties(DB).slice(0,10);
 
   let cardsList = [], itemsInRow = [];
   for (let i = 0; i < db.length; i+=2) {

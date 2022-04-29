@@ -7,9 +7,12 @@
 /* react-split styles from https://github.com/nathancahill/split/tree/master/packages/splitjs#css */
 .split  { @apply box-border; }
 .gutter { @apply bg-[#323639] bg-repeat-y bg-[center_top_20px] }
-.gutter.gutter-horizontal:hover {
+.gutter.gutter-horizontal {
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="120"><image width="10" height="40" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==" /></svg>');
-    @apply cursor-col-resize }
+    @apply border-2 border-transparent bg-transparent opacity-10
+}
+.gutter.gutter-horizontal:hover {
+    @apply cursor-col-resize border-blue-600 shadow-md shadow-blue-600 opacity-100 }
 .gutter.gutter-vertical {
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=');
     @apply cursor-row-resize }

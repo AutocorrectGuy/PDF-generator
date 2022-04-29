@@ -4,6 +4,7 @@ import Dnd from "../dnd/Dnd";
 import PdfDocument from "../pdf/PdfDocument";
 import { mapOutCardProperties } from "../pdf/cards/utils";
 
+// TODO: data should come out from navbar searchbar regex
 import DB from "../../DB_test.json"
 
 export default function EditorSplitPanel() {
@@ -23,7 +24,7 @@ export default function EditorSplitPanel() {
       className="flex pl-3 py-5 bg-[#323639] overflow-hidden"
     >
     <StyledViewer pdfDoc={myDoc}/>
-      <Dnd data={mapOutCardProperties(DB)}/>
+      <Dnd data={mapOutCardProperties(DB.slice(0,20))}/>
     </Split>
   );
 }

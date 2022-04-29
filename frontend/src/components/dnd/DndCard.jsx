@@ -1,30 +1,32 @@
+import {cardStyles, cardSizes} from "./DndStyles"
+
 export default function DndCard({cardData}) {
 
   function Header() {
     return(
-      <div data-card-h1>
+      <div data-card-h1 className={`${cardStyles.h1} ${cardSizes[0].h1}`}>
         {cardData.h1}
       </div>
     );
   }
   function Material() {
     return(
-      <div className="px-1 pt-[1px]">
-        <div className={`inline-block font-bold float-left `}>Material:&nbsp;</div>
+      <div className="px-1 pt-[1px] select-none">
+        <div className={`inline-block font-bold float-left select-none`}>Material:&nbsp;</div>
         <div>{cardData.material}</div>
       </div>
     );
   }
   function Weight() {
     return(
-      <div className="px-1">
-        <div className={`inline-block font-bold float-left`}>Weight:&nbsp;</div>
+      <div className="px-1 select-none">
+        <div className={`inline-block font-bold float-left select-none`}>Weight:&nbsp;</div>
         <div>{cardData.weight}</div>
       </div>
     );
   }
   function PriceLabel() {
-    return (<div className={`px-1 font-bold`}>Price:</div>);
+    return (<div className={`px-1 font-bold select-none`}>Price:</div>);
   }
 
   // Render object, if prop is given from database
@@ -34,29 +36,31 @@ export default function DndCard({cardData}) {
 
   function LeftSide() {
     return(
-      <div className="w-1/2 border-r border-r-black">
-        <div className="flex flex-col">
+      <div className="w-1/2 border-r border-r-black select-none">
+        <div className="flex flex-col select-none">
           <Header />
-          <div className="flex flex-col">
+          <div className="flex flex-col select-none">
             {isMaterial && <Material /> }
             {isWeight   && <Weight /> }
             {isPrice    && <PriceLabel /> }
           </div>
         </div>
       </div>
-    );
+    );  
   }
 
   function RightSide() {
     return(
-      <div className="w-1/2 text-black">
-        Wear aut bla bla bla
+      <div className="w-1/2 flex text-black select-none justify-center items-center">
+        <div>
+          {}
+        </div>
       </div>
     );
   }
 
   return(
-    <div data-card>
+    <div data-card className={`${cardStyles.card} ${cardSizes[0].card}`}>
       <LeftSide />
       <RightSide />
     </div>
