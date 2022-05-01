@@ -1,42 +1,36 @@
 import React, { Fragment, useState, useRef, useEffect } from "react";
+import Split from "react-split";
 import { SortableContainer, SortableElement } from "react-sortable-hoc";
 import { arrayMoveImmutable } from "array-move";
-import Split from "react-split";
-import DndCard from "./DndCard";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt, faCheck } from "@fortawesome/free-solid-svg-icons"
+import { faTrashAlt, faCheck, faSearch } from "@fortawesome/free-solid-svg-icons"
+import DndCard from "./DndCard";
+import { cardSizes, cardStyles, dndPanelStyles } from "./DndStyles";
+import DB from "../../DB_test.json"
 
+// init styles
+const cardWidth = cardSizes[0].width;
+const {gutterWidth, gapW, colCountForCheck} = dndPanelStyles.gutter;
+const {container, splitContainer} = dndPanelStyles;
+const {placeholderLeftCon, placeholderLeftText} = dndPanelStyles.splitLeftPlaceholder;
+const {faCheckStyles, faTrashCanStyles} = cardStyles.icons;
 
-// todo: save these variables in seperate file
-const cardWidth = 225;
-const dndStyles = {
-  gutterWidth: 64,
-  gapW: 4,
-  colCountForCheck: 5
-}
-const {gutterWidth, gapW, colCountForCheck} = dndStyles;
+//TODO transfer styles to components style file
+const faSearchStyles = "w-6 h-6 pl-2 pr-3 text-neutral-500 hover:text-[#0873BB] cursor-pointer rounded-full"
 
-const panelStyles         = "flex flex-wrap content-start py-12 gap-[2px] mx-2 relative";
-const panelPartStyles     = "flex flex-grow place-content-center bg-[#44494d]";
-const faTrashCanStyles    = "absolute w-6 h-6 p-[6px] top-0 right-0 text-neutral-200 hover:text-red-600 cursor-pointer rounded-full"
-const fa1                 = "absolute w-9 h-9 p-[6px] top-0 right-0 cursor-pointer rounded-full"
-const leftPanelPlaceholder = "absolute flex justify-center items-center w-full h-96 select-none overflow-hidden";
-
-export default function Dnd({data}) {
-  data.map((item, i) => {
-    item.pos = i;
-    item.isSelected = false;
-  });
+export default function Dnd() {
   const [listStateLeft, setListStateLeft]   = useState([]);
-  const [listStateRight, setListStateRight] = useState([...data]);
+  const [listStateRight, setListStateRight] = useState([]);
   const [panelSizes, setPanelSizes]         = useState([]);
-  const [x, setX] = useState(0);
   const panelBoundingBox                    = useRef(null);
+  const searchBarTextValue                  = useRef(null);
+
   useEffect(() => {
     panelBoundingBox.current                = document.getElementById("dnd-split-panel");
-    let wLeft = Math.round((cardWidth * 2+(gutterWidth/2) + gapW) / panelBoundingBox.current.clientWidth * 100);
-    setPanelSizes([wLeft, 100-wLeft])
+    let wLeft = Math.round((cardWidth * 2 + (gutterWidth / 2) + gapW) / panelBoundingBox.current.clientWidth * 100);
+    setPanelSizes([wLeft, 100 - wLeft])
   },[])
+
 
   const SortableItem     = SortableElement(({ value }) => 
     <div className="relative">
@@ -45,36 +39,88 @@ export default function Dnd({data}) {
     </div>
   );
   const SortableListLeft = SortableContainer(({ items }) => 
-    <div id="dnd-split-panel" className={`${panelStyles} ${items.length > 0 ? "overflow-hidden" : "overflow-visible"}`}>
+    <div>
+      <div id="dnd-split-panel" className={`pt-[56px] ${container} ${items.length > 0 ? "overflow-hidden" : "overflow-visible"}`}>
+      {(items.length === 0) && (
+        <div className={`${placeholderLeftCon} ${panelSizes[0] < 1 ? "" : "border-2 border-blue-600 "}`}> 
+          <div className={placeholderLeftText}>
+            {listStateRight.length > 0 ? "Izvēlies produktu no saraksta" : ""}
+          </div>
+        </div>
+      )}
       {items.sort((a, b) => (a.pos - b.pos))
         .map((item, i) => <SortableItem key={`card-${i}`} value={item} index={i}/> 
-        )}
-      {(items.length === 0) && 
-      (<div className={`${leftPanelPlaceholder} ${panelSizes[0] < 1 ? "" : "border-2 border-blue-600 "}`}> 
-        <div className="text-white text-2xl text-center px-10 opacity-40">
-          {`${panelSizes[0] < 40 ? "Izvēlies produktu no saraksta" : "Noklišķini uz produkta blakus sarakstā, lai sāktu darbu"}`}
-        </div>
-      </div>)}
+      )}
+      </div>
+      <div className={"text-white text-lg text-left pt-2 pl-2 opacity-10 select-none"}>
+        {items.length > 0 ? `n: ${items.length}` : ""}
+      </div>
     </div>
   );
-  const ListRight       = SortableContainer(({ items }) => 
-    <div className={panelStyles}>
+  const ListRight = SortableContainer(({ items }) => 
+    <div className={container}>
       {items.map((item, i) => 
         <div key={`card-${i}`} className="relative"
           onClick={(e) => onClickRightLICallBack(e, {item, i})}>
-          <FontAwesomeIcon icon={faCheck} className={`${fa1} ${item.isSelected ? "text-green-600" : "text-neutral-100" }`}/>
+          <FontAwesomeIcon icon={faCheck} className={`${faCheckStyles} ${item.isSelected ? "text-green-600" : "text-neutral-100" }`}/>
           <DndCard cardData={item} index={i}/>
+        </div>
+      )}
+      {(items.length === 0) && (
+        <div className={`${placeholderLeftCon} ${panelSizes[0] < 1 ? "" : "border-2 border-blue-600 "}`}> 
+          <div className={placeholderLeftText}>
+            {(searchBarTextValue.current!== null && searchBarTextValue.current.length > 0) 
+              ? "Katalogs netika atrasts" : "Ievadi kataloga nosaukumu"
+            }
+          </div>
         </div>
       )}
     </div>
   );
+  const SearchBarRight = () => {
+    // input text value resets on state change, so we force it to render last rendered value after last render
+    useEffect(() => {
+      document.querySelector('input[name="search-card"]').value = searchBarTextValue.current;
+      document.querySelector('input[name="search-card"]').focus();
+    }, [])
+
+    function onKeyUpListener(e) {
+      // save last text value from input, because it will reset on render
+      searchBarTextValue.current = e.target.value;
+      // return list of data if it matches users input value
+      let results = DB.filter(({lists}) => lists.includes(searchBarTextValue.current));
+      // reset selected checkboxes
+      results.map(listRightItem => listRightItem.isSelected = false);
+      // update new selected checkboxes
+      results.map((item) => item.isSelected = listStateLeft.map(({code1}) => code1).includes(item.code1));
+      setListStateRight(results);
+    }
+
+    return (
+      <div className="flex w-full justify-center bg-[#323639] pt-1 pb-3 px-2 mb-3 rounded-sm overflow-hidden">
+        <div className="flex min-w-[1px] max-w-[450px] flex-grow items-center h-10 bg-neutral-700 rounded-sm shadow-sm shadow-neutral-800">
+          <input type="text" name="search-card"
+            placeholder="Kataloga nosaukums" 
+            className="flex-grow min-w-[1px] h-full px-4 bg-[#535353] text-white placeholder:text-neutral-300 rounded-sm focus:outline-none" 
+            onChange={(e) => onKeyUpListener(e)}
+          />
+          <button className="px-2">
+            <div className="text-white">
+              Opcijas
+            </div>
+          </button>
+          <button><FontAwesomeIcon icon={faSearch} className={faSearchStyles}/></button>
+        </div>
+      </div>
+    );
+  }
   
   return (
     <Fragment>
       <Split id="dnd-split-panel" 
         direction="horizontal" dragInterval={5}  
         sizes={panelSizes} minSize={0} gutterSize={20}
-        className={panelPartStyles}
+        className={splitContainer}
         onDragStart={(sizes) => onDragStartCallBack(sizes)}
         onDragEnd={(sizes) => onDragEndCallBack(sizes)}
       >
@@ -84,6 +130,7 @@ export default function Dnd({data}) {
             onSortEnd={sortEndCallBack}/>
         </div>
         <div>
+          <SearchBarRight />
           <ListRight items={[...listStateRight]} />
         </div>
       </Split>
@@ -111,11 +158,11 @@ export default function Dnd({data}) {
       // update left list
       setListStateLeft(listStateLeft.filter(({code1}) => code1 !== item.code1));
       // update right list
-      arrCopy.map((item, j) => item.isSelected = (i === j) ? false : item.isSelected);
+      arrCopy.map((itemLeft) => itemLeft.isSelected = (item.code1 === itemLeft.code1) ? false : itemLeft.isSelected);
     // if item is not in the left list - add it to the left list (and update checkboxes)
     } else {
       // update left list
-      arrCopy.map((item, j) => item.isSelected = (i === j) ? true : item.isSelected);
+      arrCopy.map((itemLeft) => itemLeft.isSelected = (item.code1 === itemLeft.code1) ? true : itemLeft.isSelected);
       // update right list
       setListStateLeft(oldArr => {
         item.pos = i; 
@@ -136,6 +183,7 @@ export default function Dnd({data}) {
       arrCopy.map((item) => {
         item.isSelected = item.code1 === listStateLeft[index].code1 
           ? false : item.isSelected
+        return item;
       });
       setListStateRight(arrCopy);
       // remove item from the list
@@ -162,7 +210,6 @@ export default function Dnd({data}) {
           wLeftPerc = [panelLeftW, 100 - panelLeftW];
         }
     setPanelSizes(wLeftPerc);
-    console.log(wLeftPerc);
   }
 }
 

@@ -7,7 +7,8 @@ import {beautifyAndSplitPrice} from "./utils"
 
 export default function PdfCard({cardData}) {
 
-  let {h1, material, weight, w_unit, price, currency, img, code1, code2} = cardData;
+  // img and other props are not destructured
+  let {h1, material, weight, w_unit, price, currency, code1, code2} = cardData;
   let priceStringSplit = beautifyAndSplitPrice(price, currency);
 
   function Header() {
