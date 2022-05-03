@@ -22,14 +22,17 @@ export default function Navbar() {
 
   return(
     <div className="flex flex-row items-center py-1 justify-between bg-white shadow-xs">
-      <div className="ml-8 text-lg text-gray-700 hidden md:flex">Katalogu nosaukumi: katalogs_1, katalogs_2, katalogs_3, katalogs_4, katalogs_5</div>
+      <div className="ml-8 text-lg text-gray-700 hidden md:flex">Sveicināts!</div>
         <div className="flex flex-row mr-4 ml-4 md:hidden">
           <FontAwesomeIcon icon={faBars} className={faSearchStyles}/>
         </div>
         <div className="hidden md: flex-row md:mr-8  md:flex">
-          <div className={btnCL} >-</div>
-          <div className={btnCL} >+</div>
+          <a className={btnCL} onClick={(e) => openWindow(e)} >Pagaidu datu avots</a>
         </div>
     </div>
   );
+
+  function openWindow(e) {
+    window.open("https://raw.githubusercontent.com/AutocorrectGuy/PDF-generator/main/frontend/src/DB_test.json", "_blank")
+  }
 }
