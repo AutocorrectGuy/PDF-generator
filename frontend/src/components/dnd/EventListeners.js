@@ -83,6 +83,18 @@ export function onDragEndCallBack(sizes, panelContainerWidth, panelSizes, setPan
 export function calcLeftPanelWidth(cardsAmmount, panelContainerWidth) {
   return Math.round(100 * ((cardWidth * cardsAmmount) + (gutterWidth / 2) + gapW*(cardsAmmount-1)) / panelContainerWidth)
 }
+const maxDndWidth = 670;
+let sizeReduced = false;
+export function onDragCallback(sizes, panelBoundingBoxWidth, setDropdownSize) {
+  const preferedRatio = maxDndWidth / panelBoundingBoxWidth * 100;
+  if(sizes[1] < preferedRatio && !sizeReduced) {
+    sizeReduced = true;
+    setDropdownSize("small");
+  } else if (sizes[1] >= preferedRatio && sizeReduced) {
+    sizeReduced = false;
+    setDropdownSize("big");
+  }
+}
 
 /**
  * SEARCH BAR

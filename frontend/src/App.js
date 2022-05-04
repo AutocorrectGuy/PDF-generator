@@ -8,7 +8,7 @@ function App() {
   registerAllFonts();
   return (
     <>
-      <Navbar/>
+      {/* <Navbar/> */}
       <EditorSplitPanel/>
     </>
   );
